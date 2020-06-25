@@ -1,0 +1,2 @@
+WGS	/Users/kogantit/Documents/TMB/target_analysis/WGS.hg38.strelka2.unpadded.bed 
+WXS	/Users/kogantit/Documents/TMB/target_analysis/Strexome_targets_intersect_sorted_padded100.GRCh38.withCCDS.bed  

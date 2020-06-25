@@ -1,0 +1,2 @@
+WGS	/Users/kogantit/Documents/TMB/target_analysis/WGS.hg38.strelka2.unpadded.bed
+WXS	/Users/kogantit/Documents/TMB/target_analysis/xgen-exome-research-panel-targets_hg38_ucsc_liftover.100bp_padded.sort.merged.withCCDS.bed 
