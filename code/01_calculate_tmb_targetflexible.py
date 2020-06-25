@@ -162,14 +162,14 @@ needed_cols = [
 with open(args.configfile) as configlines:
     for line in configlines.readlines():
         if line.startswith("Variants_to_use_for_TMB="):
-            stripped_line = line.strip("Variants_to_use_for_TMB=").rstrip("\n")
-            var_class = stripped_line.split(",")
+            var_class = line.split("=")[1].split(",")
         if line.startswith("disease_column="):
-            disease_col = line.lstrip("disease_column").lstrip("=").rstrip("\n")
+            disease_col = line.split("=")[1].strip("\n")
         if line.startswith("samplename_column="):
-            samplename_col = line.lstrip("samplename_column").lstrip("=").rstrip("\n")
+            samplename_col = line.split("=")[1].strip("\n")
         if line.startswith("typeoftargetcolumn="):
-            typeoftargetcol = line.lstrip("typeoftargetcolumn").lstrip("=").rstrip("\n")
+            typeoftargetcol = line.split("=")[1].strip("\n")
+
 
 ###########################################################
 
@@ -182,6 +182,7 @@ allsamples = np.unique(maf_file["Tumor_Sample_Barcode"])
 
 # Filter  MAFbased on columns and also based on "variant_classification col"
 maf_file = maf_file[needed_cols]
+
 maf_file = maf_file.loc[
     maf_file.apply(lambda x: x["Variant_Classification"] in var_class, axis=1)
 ]
