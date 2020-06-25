@@ -15,4 +15,4 @@ This analysis uses TMB code from [d3b-bix-analysis-toolkit](https://github.com/d
 
 4. Output TMB for all samples in all cohorts is saved here - `TMB_outfiles/final_all_cohorts_TMB.txt`
 
-5. Cumulative distribution function plot for all samples is saved here ![all_cohorts.tmb.png]  
+5. Cumulative distribution function plot for all samples is saved here ![](all_cohorts.tmb.png)
