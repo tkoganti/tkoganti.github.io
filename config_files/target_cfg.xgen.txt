@@ -1,2 +1,0 @@
-WGS	/Users/kogantit/Documents/TMB/target_analysis/ccds_and_target/CCDS.bed 
-WXS	/Users/kogantit/Documents/TMB/target_analysis/xgen-exome-research-panel-targets_hg38_ucsc_liftover.100bp_padded.sort.merged.withCCDS.bed 
