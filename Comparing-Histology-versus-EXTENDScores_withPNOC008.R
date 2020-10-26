@@ -71,8 +71,7 @@ Stranded_Histology <- rbind(Stranded_Histology,pnoc008_TMScores_and_Histology)
 print(head(Stranded_Histology))
 print(tail(Stranded_Histology))
 
-
-
+sample_of_interest <- as.numeric(Stranded_Histology[ which(Stranded_Histology$SampleID=='PNOC008-15'),] %>% select(NormEXTENDScores))
 
 pdf(PBTA_EXTEND_HistologyCompPlot)
 
@@ -87,10 +86,13 @@ theme_set(theme_classic() +
         )
 )
 
-#P1 = ggplot(Stranded_Histology, aes(x=fct_reorder(short_histology,NormEXTENDScores,.desc =TRUE),y=NormEXTENDScores))+geom_boxplot(size= 0.1,notch=FALSE,outlier.size = 0,outlier.shape=NA,fill="pink",alpha=0.5)+ geom_jitter(alpha= 0.5,shape=16, cex=0.3)+  ylab("EXTEND Scores")+ ggtitle("Tumor Short Histology")
-P1 = ggplot(Stranded_Histology, aes(x=fct_reorder(short_histology,NormEXTENDScores,.desc =TRUE),y=NormEXTENDScores))+  ylab("EXTEND Scores")+ ggtitle("Tumor Short Histology") + geom_point(aes(col=cohort, shape=cohort), position="jitter", size = 0.7) + geom_boxplot(size= 0.1,notch=FALSE,outlier.size = 0,outlier.shape=NA,fill="pink",alpha=0.5)
-#P2 = ggplot(Stranded_Histology, aes(x=fct_reorder(broad_histology,NormEXTENDScores,.desc =TRUE),y=NormEXTENDScores))+geom_boxplot(size= 0.1,notch=FALSE,outlier.size = 0,outlier.shape=NA,fill="pink",alpha=0.5)+ geom_jitter(alpha=0.5,shape=16, cex=0.3)+ ylab("EXTEND Scores")+ ggtitle("Tumor Broad Histology")
-P2 = ggplot(Stranded_Histology, aes(x=fct_reorder(broad_histology,NormEXTENDScores,.desc =TRUE),y=NormEXTENDScores))+ ylab("EXTEND Scores")+ ggtitle("Tumor Broad Histology") + geom_point(aes(col=cohort, shape=cohort), position="jitter", size = 0.7) + geom_boxplot(size= 0.1,notch=FALSE,outlier.size = 0,outlier.shape=NA,fill="pink",alpha=0.5)
+P1 = ggplot(Stranded_Histology, aes(x=fct_reorder(short_histology,NormEXTENDScores,.desc =TRUE),y=NormEXTENDScores))+geom_boxplot(size= 0.1,notch=FALSE,outlier.size = 0,outlier.shape=NA,fill="pink",alpha=0.5)+ geom_jitter(alpha= 0.5,shape=16, cex=0.3)+  ylab("EXTEND Scores")+ ggtitle("Tumor Short Histology")
+#P1 = ggplot(Stranded_Histology, aes(x=fct_reorder(short_histology,NormEXTENDScores,.desc =TRUE),y=NormEXTENDScores))+  ylab("EXTEND Scores")+ ggtitle("Tumor Short Histology") + geom_point(aes(col=cohort, shape=cohort), position="jitter", size = 0.7) + geom_boxplot(size= 0.1,notch=FALSE,outlier.size = 0,outlier.shape=NA,fill="pink",alpha=0.5)
+P1 = P1 + geom_hline(yintercept=sample_of_interest, linetype="dashed", color = "red", size=0.2)
+
+P2 = ggplot(Stranded_Histology, aes(x=fct_reorder(broad_histology,NormEXTENDScores,.desc =TRUE),y=NormEXTENDScores))+geom_boxplot(size= 0.1,notch=FALSE,outlier.size = 0,outlier.shape=NA,fill="pink",alpha=0.5)+ geom_jitter(alpha=0.5,shape=16, cex=0.3)+ ylab("EXTEND Scores")+ ggtitle("Tumor Broad Histology")
+#P2 = ggplot(Stranded_Histology, aes(x=fct_reorder(broad_histology,NormEXTENDScores,.desc =TRUE),y=NormEXTENDScores))+ ylab("EXTEND Scores")+ ggtitle("Tumor Broad Histology") + geom_point(aes(col=cohort, shape=cohort), position="jitter", size = 0.7) + geom_boxplot(size= 0.1,notch=FALSE,outlier.size = 0,outlier.shape=NA,fill="pink",alpha=0.5)
+P2 = P2 + geom_hline(yintercept=sample_of_interest, linetype="dashed", color = "red", size=0.2)
 
 
 plot_grid(P1,P2, nrow = 2,labels = "AUTO", label_size = 12, scale=c(0.95,0.95),  align = "v")
